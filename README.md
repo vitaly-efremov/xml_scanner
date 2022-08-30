@@ -6,6 +6,12 @@ How to install?
   poetry install
 ```
 
+How to run?
+------------  
+```
+  poetry run python main.py
+```
+
 Benchmark results
 ------------  
 For all methods report generation repeated 100x. 
