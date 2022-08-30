@@ -15,7 +15,10 @@ def proceed_zip_file(zip_file, variables_report_filename, objects_report_filenam
     object_rows = []
     for xml_data in extract_xml_data(zip_file):
         variable_rows.append([xml_data.xml_id, xml_data.level])
-        object_rows += [[xml_data.xml_id, name] for name in xml_data.object_names]
+        object_rows += [
+            [xml_data.xml_id, name]
+            for name in xml_data.object_names
+        ]
 
     variables_csv.write_rows(variable_rows)
     objects_csv.write_rows(object_rows)

@@ -13,7 +13,7 @@ class AsyncCSVWriter:
         await self._write_rows(rows=[columns], file_open_mode='w')
 
     async def write_rows(self, rows: Iterable[List[str]]):
-        await self._write_rows(rows, file_open_mode='a+')
+        await self._write_rows(rows, file_open_mode='a')
 
     async def _write_rows(self, rows: Iterable[List[str]], file_open_mode: str):
         formatted_rows = (self._separator.join(f'"{value}"' for value in values) for values in rows)

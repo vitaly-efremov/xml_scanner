@@ -34,7 +34,10 @@ class ReportGenerator:
         object_rows = []
         for xml_data in xml_collection:
             variable_rows.append([xml_data.xml_id, xml_data.level])
-            object_rows += [[xml_data.xml_id, name] for name in xml_data.object_names]
+            object_rows += [
+                [xml_data.xml_id, name]
+                for name in xml_data.object_names
+            ]
 
         await asyncio.gather(
             self._variables_csv.write_rows(variable_rows),

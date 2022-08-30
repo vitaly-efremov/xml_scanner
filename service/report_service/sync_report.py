@@ -1,7 +1,7 @@
 import timeit
 from pathlib import Path
 
-from service.csv_writer import СSVWriter
+from service.csv_writer import CSVWriter
 from service.xml_service import extract_xml_data
 
 
@@ -11,8 +11,8 @@ class ReportGenerator:
         variables_report_filename='variables_report.csv',
         objects_report_filename='objects_report.csv',
     ):
-        self._variables_csv = СSVWriter(variables_report_filename)
-        self._objects_csv = СSVWriter(objects_report_filename)
+        self._variables_csv = CSVWriter(variables_report_filename)
+        self._objects_csv = CSVWriter(objects_report_filename)
 
     def generate(self, data_path: Path):
         self._variables_csv.write_header(columns=['id', 'level'])
@@ -27,7 +27,10 @@ class ReportGenerator:
         object_rows = []
         for xml_data in extract_xml_data(zip_file):
             variable_rows.append([xml_data.xml_id, xml_data.level])
-            object_rows += [[xml_data.xml_id, name] for name in xml_data.object_names]
+            object_rows += [
+                [xml_data.xml_id, name]
+                for name in xml_data.object_names
+            ]
 
         self._variables_csv.write_rows(variable_rows)
         self._objects_csv.write_rows(object_rows)
