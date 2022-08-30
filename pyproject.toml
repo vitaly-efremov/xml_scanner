@@ -7,8 +7,6 @@ authors = ["Vitaly Efremov"]
 [tool.poetry.dependencies]
 python = "^3.8"
 aiofiles = "^0.8.0"
-line-profiler = "^3.5.1"
-aiocsv = "^1.2.2"
 
 [tool.poetry.dev-dependencies]
 

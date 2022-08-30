@@ -1,7 +1,7 @@
 import timeit
 from pathlib import Path
 
-from csv_writer import СSVWriter
+from service.csv_writer import СSVWriter
 from service.xml_service import extract_xml_data
 
 
@@ -33,11 +33,7 @@ class ReportGenerator:
         self._objects_csv.write_rows(object_rows)
 
 
-def main():
+if __name__ == '__main__':
     path = Path('../data')
     report_generator = ReportGenerator()
-    report_generator.generate(path)
-
-
-if __name__ == '__main__':
-    print(timeit.timeit(main, number=100))
+    print(timeit.timeit(lambda: report_generator.generate(path), number=100))

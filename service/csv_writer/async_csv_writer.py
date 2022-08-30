@@ -19,4 +19,4 @@ class AsyncCSVWriter:
         formatted_rows = (self._separator.join(f'"{value}"' for value in values) for values in rows)
         content = '\n'.join(formatted_rows)
         async with aiofiles.open(self._filename, file_open_mode) as file:
-            await file.write('\n' + content)
+            await file.write(content + '\n')
