@@ -36,7 +36,7 @@ def create_xml(level: int, children_count: int, id_: UUID = None) -> ElementTree
     root = ElementTree.Element('root')
     xml_id = id_ or uuid4()
     ElementTree.SubElement(root, 'var', attrib={'name': 'id', 'value': str(xml_id)})
-    ElementTree.SubElement(root, 'level', attrib={'name': 'level', 'value': str(level)})
+    ElementTree.SubElement(root, 'var', attrib={'name': 'level', 'value': str(level)})
 
     objects = ElementTree.SubElement(root, 'objects')
     for _ in range(children_count):
